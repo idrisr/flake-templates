@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}
+  \node {$f$}
+    child {node {$\circ$}
+      child {node {$x$}}
+      child {node {$y$}}
+    };
+\end{tikzpicture}
+\begin{tikzpicture}
+  \node {$\circ$}
+    child {node {$f$}
+      child {node {$x$}}
+    }
+    child {node {$f$}
+      child {node {$y$}}
+    };
+\end{tikzpicture}
+\end{document}

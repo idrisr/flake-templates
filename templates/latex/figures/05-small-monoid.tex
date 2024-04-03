@@ -1,0 +1,13 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+    \node (d) at (0, 0) {$\ast$};
+    \path [-stealth, thick]
+        (d) edge [out=75, in=115, looseness=8] node[above] {$+1_4$}(d)
+        (d) edge [out=30, in=150, looseness=15] node[above] {$+2_4$}(d)
+        (d) edge [out=25, in=155, looseness=30] node[above] {$+3_4$}(d)
+        (d) edge [out=-75, in=-115, looseness=8] node[below] {$+0_4$}(d)
+        ;
+\end{tikzpicture}
+\end{document}

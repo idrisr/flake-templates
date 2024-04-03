@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}
+  \node {$f$}
+    child {node {$+$}
+      child {node {$0$}}
+      child {node {$n$}}
+    };
+\end{tikzpicture}
+\begin{tikzpicture}
+  \node {$f$}
+    child {node {$+$}
+      child {node {$n$}}
+    };
+\end{tikzpicture}
+\begin{tikzpicture}
+  \node {$+$}
+    child {node {$f$}
+      child {node {$0$}}
+    }
+    child {node {$f$}
+      child {node {$n$}}
+    };
+\end{tikzpicture}
+\end{document}

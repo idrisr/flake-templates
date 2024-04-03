@@ -1,0 +1,37 @@
+\documentclass[border=0.2cm]{standalone}
+\usepackage{tikz}
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage{standalone}
+\usepackage{tikzit}
+\usetikzlibrary{automata, arrows.meta, positioning}
+\usetikzlibrary{arrows.meta, positioning}
+\input{sample-02.tikzstyles}
+
+\begin{document}
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+        \node [style=object] (0) at (0, 0) {$\mathbb{C}$};
+        \node [style=object] (1) at (4.5, 0) {$\mathbb{D}$};
+        \node [style=object] (2) at (9, 0) {$\mathbb{E}$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+        \path [-stealth, thick]
+        (0) edge node[above] {$F$}   (1)
+        (1) edge node[above] {$G$}   (2)
+        (0) edge [out=30, in=60, looseness=8, below]  node[above] {$1$}(0)
+        (0) edge [out=120, in=150, looseness=8, below] node[above] {$x\ast y$}(0)
+        (0) edge [out=210, in=240, looseness=8, below]  node[below] {$x$}(0)
+        (0) edge [out=300, in=330, looseness=8, below]  node[below] {$y$}(0)
+        (1) edge [out=30, in=60, looseness=8, below]  node[above] {$F(1)$}(1)
+        (1) edge [out=120, in=150, looseness=8, below] node[above] {$F(x\ast y$)}(1)
+        (1) edge [out=210, in=240, looseness=8, below]  node[below] {$F(x)$}(1)
+        (1) edge [out=300, in=330, looseness=8, below]  node[below] {$F(y)$}(1)
+        (2) edge [out=30, in=60, looseness=8, below]  node[above, xshift=1cm] {$(G\circ F)(1)$}(2)
+        (2) edge [out=120, in=150, looseness=8, below] node[xshift=-0.4cm,above] {$(G\circ F)(x\ast y$)}(2)
+        (2) edge [out=210, in=240, looseness=8, below]  node[xshift=-0.5cm, below] {$(G\circ F)(x)$}(2)
+        (2) edge [out=300, in=330, looseness=8, below]  node[xshift=0.5cm, below] {$(G\circ F)(y)$}(2)
+        ;
+	\end{pgfonlayer}
+\end{tikzpicture}
+\end{document}

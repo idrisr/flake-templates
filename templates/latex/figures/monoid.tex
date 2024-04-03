@@ -1,0 +1,33 @@
+\documentclass[border=0.2cm]{standalone}
+\usepackage{tikz}
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage{standalone}
+\usepackage{tikzit}
+\usetikzlibrary{automata, arrows.meta, positioning}
+\usetikzlibrary{arrows.meta, positioning}
+\input{sample-02.tikzstyles}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.0]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=object] (0) at (0, 0) {$M_A$};
+		\node [style=object] (1) at (4, 0) {$M_B$};
+		\node [style=object] (2) at (8, 0) {$M_C$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+        \path [-stealth, thick]
+        (0) edge node[above] {$f$}   (1)
+        (1) edge node[above] {$g$}   (2)
+        (0) edge [out=210, in=240, looseness=8, below]  node {$x$}(0)
+        (0) edge [out=330, in=300, looseness=8, below]  node {$y$}(0)
+        (0) edge [loop above] node[above] {$x\ast y$}(0)
+        (1) edge [out=210, in=240, looseness=8, below]  node {$x$}(1)
+        (1) edge [out=330, in=300, looseness=8, below]  node {$y$}(1)
+        (1) edge [loop above] node[above] {$f(x\ast y)$}(1)
+        (2) edge [out=210, in=240, looseness=8, below]  node {$x$}(2)
+        (2) edge [out=330, in=300, looseness=8, below]  node {$y$}(2)
+        (2) edge [loop above] node[above] {$(g\circ f)(x\ast y)$}(2) ;
+	\end{pgfonlayer}
+\end{tikzpicture}
+\end{document}

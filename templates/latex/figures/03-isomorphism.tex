@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}[scale=0.7]
+    \tikzset{arc lines/.style={very thick,black, ->}}
+    \node (a) at (0, 0) {$a$};
+    \node (b) at (4, 0) {$b$};
+    \node (x) at (2, 4) {$x$};
+    \draw[arc lines, dashed, ->] (0) to node[pos=0.5, left] {$s$} (x);
+    \draw[arc lines, dashed, ->] (1) to node[pos=0.5, right] {$t$} (x);
+    \draw [arc lines, ->, bend left=30] (a) to node[pos=0.5, above] {$f$} (b);
+    \draw [arc lines, ->, bend left=30] (b) to node[pos=0.5, below] {$g$} (a);
+\end{tikzpicture}
+\end{document}
