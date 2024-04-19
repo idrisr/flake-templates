@@ -1,6 +1,9 @@
 *.aux
 *.fdb_latexmk
 *.fls
+*.idx
+*.ilg
+*.ind
 *.log
 *.out
 *.pdf
@@ -13,3 +16,4 @@
 .direnv
 .envrc
 result
+samples/
