@@ -7,7 +7,10 @@
   outputs = { nixpkgs, flake-utils, hippoid-tex, ... }:
     let
       system = flake-utils.lib.system.x86_64-linux;
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ hippoid-tex.overlays.hippoid-tex ];
+      };
       cleaner = pkgs.writeShellApplication {
         runtimeInputs = [ tex ];
         name = "clean";
@@ -26,9 +29,7 @@
       };
       tex = pkgs.texlive.combine {
         inherit (pkgs.texlive) scheme-full;
-        hippoid-tex = {
-          pkgs = [ hippoid-tex.packages.${system}.hippoid-tex ];
-        };
+        hippoid-tex = { pkgs = [ pkgs.hippoid-tex ]; };
       };
     in {
       packages.${system}.default = tex;
