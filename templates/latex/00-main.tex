@@ -1,13 +1,37 @@
-\documentclass[10pt]{hippoidC}
-\input{preamble}
+\documentclass[12pt]{article}
+\usepackage{hippoidP}
+\usepackage{standalone}
+\usepackage{dirtytalk}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+
+\usepackage{makeidx}
+\makeindex
+\usepackage[hyperindex]{hyperref}
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{automata}
+\usetikzlibrary{calc}
+\usetikzlibrary{fit}
+\usetikzlibrary{petri}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric}
+
+\usepackage[printsolution=true]{exercises}
+\usepackage[margin=1.2in]{geometry}% Sets 1in margins.
+\usepackage{float}
+\setlength{\parindent}{0pt}
+
+\docsetup{Category Theory / Haskell}{Programming with Categories}{April 8, 2024}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
 \begin{document}
-\include{99-title}
 \tableofcontents
-\pagebreak
-\listoffigures
-\listoftables
-\include{01-first-thing}
-% \include{09-examples-previously-seen}
-% \bibliographystyle{alpha}
-% \bibliography{bibliography}
+\section{Categories, Types, and Functions}
+\subsection{Two fundamental ideas: sets and functions}
+
+\printindex
 \end{document}
