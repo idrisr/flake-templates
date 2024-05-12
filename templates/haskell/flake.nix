@@ -28,6 +28,7 @@
         implicit-hie
         retrie
         cabal-install
+        cabal-fmt
       ];
       tools = dTools ++ hTools;
       renameme = pkgs.haskell.packages.ghc948.callCabal2nix "" ./renameme { };
