@@ -6,7 +6,7 @@
     devenv.url = "github:cachix/devenv";
   };
 
-  outputs = inputs@{ nixpkgs, flake-utils, ... }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
     let
       pkgs = nixpkgs.legacyPackages.${system};
       hooks = {
@@ -34,8 +34,14 @@
       renameme = pkgs.haskell.packages.ghc948.callCabal2nix "" ./renameme { };
 
     in {
-      devShells.${system}.default = pkgs.mkShell {
-        buildInputs = tools;
+      # devShells.${system}.default = pkgs.mkShell {
+      # buildInputs = tools;
+      # LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath tools;
+      # };
+      devShells.${system}.default = nixpkgs.legacyPackages.${system}.mkShell {
+        inherit (self.checks.${system}.pre-commit-check) shellHook;
+        buildInputs = self.checks.${system}.pre-commit-check.enabledPackages
+          ++ tools;
         LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath tools;
       };
 
