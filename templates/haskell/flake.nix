@@ -46,6 +46,7 @@
           src = ./.;
           inherit hooks;
         };
+        inherit renameme;
       };
     };
 }
