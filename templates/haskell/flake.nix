@@ -13,6 +13,10 @@
         nixfmt.enable = true;
         deadnix.enable = true;
         beautysh.enable = true;
+        # fourmolu.enable = true; how to get these haskell packages as a
+        # function of the compiler set?
+        # cabal-fmt.enable = true;
+        # how to get unit tests added for haskell?
       };
 
       system = flake-utils.lib.system.x86_64-linux;
@@ -34,10 +38,6 @@
       renameme = pkgs.haskell.packages.ghc948.callCabal2nix "" ./renameme { };
 
     in {
-      # devShells.${system}.default = pkgs.mkShell {
-      # buildInputs = tools;
-      # LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath tools;
-      # };
       devShells.${system}.default = nixpkgs.legacyPackages.${system}.mkShell {
         inherit (self.checks.${system}.pre-commit-check) shellHook;
         buildInputs = self.checks.${system}.pre-commit-check.enabledPackages
