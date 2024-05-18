@@ -42,11 +42,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1713557192,
-        "narHash": "sha256-Vsl8eqTSkxzBlBDG+JizatHcv676juMiiFqmk7yAIvM=",
+        "lastModified": 1713740369,
+        "narHash": "sha256-SYq6tRRUX2vnSfkuOCkKSFEOG/sY0JujCrPdfGdqY0I=",
         "owner": "idrisr",
         "repo": "hippoid-tex",
-        "rev": "f5a2e8fa6c1fd635d4d487149ad6f3a9d23e6174",
+        "rev": "395c8d9e990aa2b5c1e208424a3db81c91b6fbd7",
         "type": "github"
       },
       "original": {
