@@ -1,4 +1,5 @@
 *.aux
+*.devenv
 *.fdb_latexmk
 *.fls
 *.idx

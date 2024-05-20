@@ -1,12 +1,23 @@
 {
   description = "template for math proofs";
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/23.11";
-  inputs.flake-utils.url = "github:numtide/flake-utils";
-  inputs.hippoid-tex.url = "github:idrisr/hippoid-tex";
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/23.11";
+    flake-utils.url = "github:numtide/flake-utils";
+    hippoid-tex.url = "github:idrisr/hippoid-tex";
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    devenv.url = "github:cachix/devenv";
+  };
 
-  outputs = { nixpkgs, flake-utils, hippoid-tex, ... }:
+  outputs = inputs@{ nixpkgs, flake-utils, hippoid-tex, ... }:
     let
       system = flake-utils.lib.system.x86_64-linux;
+      hooks = {
+        nixfmt.enable = true;
+        deadnix.enable = true;
+        beautysh.enable = true;
+        chktex.enable = true;
+        lacheck.enable = true;
+      };
       pkgs = import nixpkgs {
         inherit system;
         overlays = [ hippoid-tex.overlays.hippoid-tex ];
@@ -24,7 +35,7 @@
         name = "makepdf";
         text = ''
           mkdir -p aux pdf
-          latexmk -interaction=nonstopmode -lualatex -pdf -auxdir=aux -outdir=pdf ./*tex
+          latexmk -interaction=nonstopmode -lualatex -auxdir=aux -outdir=pdf ./*tex
         '';
       };
       tex = pkgs.texlive.combine {
@@ -32,10 +43,25 @@
         hippoid-tex = { pkgs = [ pkgs.hippoid-tex ]; };
       };
     in {
-      packages.${system}.default = tex;
-      devShells.${system} = {
-        default = pkgs.mkShell { buildInputs = [ tex ]; };
+      checks.${system} = {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          inherit hooks;
+        };
       };
+
+      packages.${system}.default = tex;
+      devShells.${system} = let pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        default = inputs.devenv.lib.mkShell {
+          inherit inputs pkgs;
+          modules = [{
+            pre-commit.hooks = hooks;
+            packages = [ tex pkgs.codespell ];
+          }];
+        };
+      };
+
       apps.${system} = {
         clean = {
           type = "app";
