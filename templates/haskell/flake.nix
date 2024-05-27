@@ -29,6 +29,7 @@
         fourmolu
         hlint
         hoogle
+        haskell-language-server
         implicit-hie
         retrie
         cabal-install
