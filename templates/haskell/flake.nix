@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/24.05";
     flake-utils.url = "github:numtide/flake-utils";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     devenv.url = "github:cachix/devenv";
@@ -20,7 +20,7 @@
       };
 
       system = flake-utils.lib.system.x86_64-linux;
-      compiler = "ghc948";
+      compiler = "ghc965";
       hPkgs = pkgs.haskell.packages."${compiler}";
       dTools = with pkgs; [ zlib ];
       hTools = with hPkgs; [

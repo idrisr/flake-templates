@@ -11,14 +11,14 @@ common warnings
 library
   import:          warnings
   exposed-modules:
-  build-depends:   base ^>=4.17.2.1
+  build-depends:   base ^>=4.18.2.1
   hs-source-dirs:  src
 
 executable exe
   import:         warnings
   main-is:        Main.hs
   build-depends:
-    , base      ^>=4.17.2.1
+    , base      ^>=4.18.2.1
     , renameme
 
   hs-source-dirs: app
@@ -29,7 +29,7 @@ test-suite tests
   hs-source-dirs: test
   main-is:        Main.hs
   build-depends:
-    , base         ^>=4.17.2.1
+    , base         ^>=4.18.2.1
     , renameme
     , tasty
     , tasty-hunit
