@@ -1,7 +1,7 @@
 {
   description = "template for math proofs";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/24.05";
     flake-utils.url = "github:numtide/flake-utils";
     hippoid-tex.url = "github:idrisr/hippoid-tex";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
