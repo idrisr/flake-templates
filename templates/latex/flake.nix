@@ -57,7 +57,7 @@
           inherit inputs pkgs;
           modules = [{
             pre-commit.hooks = hooks;
-            packages = [ tex pkgs.codespell ];
+            packages = [ tex pkgs.codespell pkgs.python312Packages.pygments ];
           }];
         };
       };
