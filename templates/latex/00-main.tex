@@ -32,6 +32,10 @@
 \begin{document}
 \include{99-title}
 \tableofcontents
+\pagebreak
+\listoffigures
+\listoftables
+
 \section{Categories, Types, and Functions}
 \subsection{Two fundamental ideas: sets and functions}
 
@@ -45,6 +49,13 @@ int main() {
 here is some inline code \mint{python}|import this|.
 
 % \inputminted{haskell}{../02-composition/src/Comp.hs}
+
+\begin{figure}[H]
+	\begin{center}
+		\input{figures/samples/05-toset.tex}
+	\end{center}
+	\caption{Toset}
+\end{figure}
 
 \printindex
 \end{document}
