@@ -21,7 +21,6 @@
 *.ind
 *.law
 *.listing
-*.lock
 *.lof
 *.log
 *.lot
