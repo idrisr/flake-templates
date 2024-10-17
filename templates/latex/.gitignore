@@ -6,7 +6,6 @@
 *.bcf-SAVE-ERROR
 *.bib
 *.blg
-*.chktexrc
 *.commandment
 *.definition
 *.devenv
