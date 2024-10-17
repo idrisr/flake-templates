@@ -12,7 +12,6 @@
 *.devenv
 *.direnv
 .direnv
-.envrc
 *.fdb_latexmk
 *.fls
 *.gz
