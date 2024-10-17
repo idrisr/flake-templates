@@ -1,54 +1,44 @@
-\documentclass[12pt]{article}
-\usepackage{hippoidP}
-\usepackage{standalone}
-\usepackage{dirtytalk}
-\usepackage[T1]{fontenc}
-\usepackage{tikz}
-\usepackage{minted}
-
-\usepackage{makeidx}
-\makeindex
-\usepackage[hyperindex]{hyperref}
-
-\usetikzlibrary{arrows}
-\usetikzlibrary{arrows.meta}
-\usetikzlibrary{automata}
-\usetikzlibrary{calc}
-\usetikzlibrary{fit}
-\usetikzlibrary{petri}
-\usetikzlibrary{positioning}
-\usetikzlibrary{shapes.geometric}
-
-\usepackage[printsolution=true]{exercises}
-\usepackage[margin=1.2in]{geometry}% Sets 1in margins.
-\usepackage{float}
-\setlength{\parindent}{0pt}
-
-\docsetup{Category Theory / Haskell}{Programming with Categories}{April 8, 2024}
-
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
+\documentclass[12pt]{book}
+\input{preamble}
 
 \begin{document}
-\include{99-title}
+\maketitle{}
 \tableofcontents
-\pagebreak
+\tcblistof[\section]{definition}{List of Definitions}
 \listoffigures
 \listoftables
 
-\section{Categories, Types, and Functions}
-\subsection{Two fundamental ideas: sets and functions}
+\chapter{Type Inference}
 
-\begin{minted}{c}
-int main() {
-    printf("hello, world");
-    return 0;
-}
-\end{minted}
+\begin{enumerate}[label = {(\alph*)}]
+	\item asdf
+	\item asdf
+\end{enumerate}
 
-here is some inline code \mint{python}|import this|.
+\begin{intuition}{Type Inference}
+	The essense of type inference is walking the abstract syntax tree and
+	collect constraints we must satisfy. Therefore we would reformulate the
+	problem to so-called unification problem.
+\end{intuition}
 
-% \inputminted{haskell}{../02-composition/src/Comp.hs}
+\begin{definition}{Type Inference}{}
+	Figuring out whether an expression $e$ is well-typed, and if so, what it's
+	type $T$ is $e: T$.
+\end{definition}
+
+\begin{definition}{Type Inference By Hand}{}
+	We can approximate this algorithm by
+	\begin{enumerate}
+		\item assigning a fresh type variable to each bound name
+		\item assigning a fresh type variable to the function return value
+		\item solving type constraints until there is nothing more to do.
+	\end{enumerate}
+\end{definition}
+
+\section{Example}
+\begin{haskell}{}
+	myFun w x y z = if y then w : tail x else y : z
+\end{haskell}
 
 \begin{figure}[H]
 	\begin{center}
@@ -57,5 +47,36 @@ here is some inline code \mint{python}|import this|.
 	\caption{Toset}
 \end{figure}
 
-\printindex
+\section{Example}
+\begin{center}
+	\begin{forest}
+		[\hask{=}
+			[\hask{z}
+				[\hask{f}]
+			]
+			[\hask{f}
+				[\hask{(,)}
+					[\hask{f}
+						[\hask{3} ]
+					]
+					[\hask{f}
+						[\hask{3} ]
+					]
+				]
+			]
+		]
+	\end{forest}
+\end{center}
+
+
+\chapter{Functor}
+\epigraph{
+	There are two keys to an expert Haskell hacker’s wisdom. First understand
+	the types. Next gain a deep intuition for each type class and its
+	relationship to other type classes, backed up by familiarity with many
+	examples.
+}{Brent Yorgey}
+
+% \printbibliography{}
+% \printindex{}
 \end{document}
