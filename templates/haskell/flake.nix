@@ -36,7 +36,8 @@
         cabal-fmt
       ];
       tools = dTools ++ hTools;
-      renameme = pkgs.haskell.packages.ghc948.callCabal2nix "" ./renameme { };
+      renameme =
+        pkgs.haskell.packages.${compiler}.callCabal2nix "" ./renameme { };
 
     in {
       devShells.${system}.default = nixpkgs.legacyPackages.${system}.mkShell {
