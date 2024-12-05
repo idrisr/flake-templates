@@ -1,2 +1,3 @@
 .pre-commit-config.yaml
 templates/latex/_minted-00-main
+templates/latex/.devenv.flake.nix
