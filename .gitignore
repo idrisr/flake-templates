@@ -1,3 +1,5 @@
 .pre-commit-config.yaml
 templates/latex/_minted-00-main
 templates/latex/.devenv.flake.nix
+templates/haskell/.devenv
+templates/haskell/.devenv.flake.nix
