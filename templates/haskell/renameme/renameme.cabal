@@ -11,8 +11,11 @@ common warnings
 
 library
   import:          warnings
-  exposed-modules:
-  build-depends:   base ^>=4.18.2.1
+  exposed-modules: Params
+  build-depends:
+    , base                  ^>=4.18.2.1
+    , optparse-applicative
+
   hs-source-dirs:  src
 
 executable exe
