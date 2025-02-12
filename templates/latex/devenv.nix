@@ -5,4 +5,8 @@
     enable = true;
     base = pkgs.texliveFull;
   };
+  scripts.linkpdf.exec = ''
+    ln $DEVENV_ROOT/doc/00-main.pdf ~/documents/papers/MYPDF.pdf
+  '';
+
 }

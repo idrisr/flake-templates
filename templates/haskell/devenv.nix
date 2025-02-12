@@ -5,6 +5,7 @@ in {
     fourmolu
     cabal-fmt
     implicit-hie
+    ghcid
   ];
 
   languages.haskell.enable = true;
