@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let compiler = "ghc965";
+let compiler = "ghc96";
 in {
   packages = with pkgs.haskell.packages."${compiler}"; [
     fourmolu
