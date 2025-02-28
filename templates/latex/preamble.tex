@@ -99,6 +99,15 @@
 
 \newcommand{\hask}[1]{\mintinline{haskell}{#1}}
 
+\newenvironment{alist}
+{\begin{enumerate}[label={*}, leftmargin=*, itemsep=0pt, parsep=0pt]}
+		{\end{enumerate}}
+
+\newenvironment{blist}
+{\begin{enumerate}[label={}, leftmargin=*, itemsep=0pt, parsep=0pt]}
+		{\end{enumerate}}
+
+
 \renewcommand{\thesection}{\arabic{section}}
 \tcbset{enhanced jigsaw}
 
