@@ -1,0 +1,11 @@
+$pdf_mode = 1;              # compile to pdf
+$out_dir = "build";         # output directory
+$aux_dir = "build";         # auxiliary directory
+
+unless (-d $out_dir) {      # create build directory if missing
+    mkdir $out_dir or die "cannot create $out_dir: $!";
+}
+
+$pdf_mode = 1;
+$pdflatex = 'pdflatex -interaction=nonstopmode -shell-escape';
+$pdf_previewer = 'zathura %Y/%R.pdf > /dev/null 2>&1 &';
