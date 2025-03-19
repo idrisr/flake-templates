@@ -2,14 +2,14 @@
 \usepackage{tikz}
 \begin{document}
 \begin{tikzpicture}[scale=0.7]
-    \tikzset{arc lines/.style={very thick,black, ->}}
-    % \draw (0, 0) grid (16, 2);
-    \node (a) at (0, 0) {$a$};
-    \node (b) at (4, 0) {$b$};
-    \node (x) at (2, 4) {$x$};
-    \draw[arc lines, dashed, ->] (x) to node[pos=0.5, left] {$s$} (0);
-    \draw[arc lines, dashed, ->] (x) to node[pos=0.5, right] {$t$} (1);
-    \draw [arc lines, ->, bend left=30] (a) to node[pos=0.5, above] {$f$} (b);
-    \draw [arc lines, ->, bend left=30] (b) to node[pos=0.5, below] {$g$} (a);
+	\tikzset{arc lines/.style={very thick,black, ->}}
+	% \draw (0, 0) grid (16, 2);
+	\node (a) at (0, 0) {$a$};
+	\node (b) at (4, 0) {$b$};
+	\node (x) at (2, 4) {$x$};
+	\draw[arc lines, dashed, ->] (x) to node[pos=0.5, left] {$s$} (0);
+	\draw[arc lines, dashed, ->] (x) to node[pos=0.5, right] {$t$} (1);
+	\draw [arc lines, ->, bend left=30] (a) to node[pos=0.5, above] {$f$} (b);
+	\draw [arc lines, ->, bend left=30] (b) to node[pos=0.5, below] {$g$} (a);
 \end{tikzpicture}
 \end{document}
