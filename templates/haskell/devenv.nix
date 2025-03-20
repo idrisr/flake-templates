@@ -6,6 +6,7 @@ in {
     cabal-fmt
     implicit-hie
     ghcid
+    cabal2nix
   ];
 
   languages.haskell.enable = true;
