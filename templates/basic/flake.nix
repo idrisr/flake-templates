@@ -1,12 +1,16 @@
 {
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/24.05";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/24.11";
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
   outputs = { nixpkgs, flake-utils, ... }:
     let
       system = flake-utils.lib.system.x86_64-linux;
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = nixpkgs.legacyPackages.${system};
+      doc = pkgs.callPackage ./doc { };
     in {
-      devShells.${system} = { default = pkgs.mkShell { buildInputs = [ ]; }; };
+      packages.${system} = {
+        default = doc;
+        inherit doc;
+      };
     };
 }
