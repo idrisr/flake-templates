@@ -3,3 +3,5 @@
 .direnv
 build
 .envrc
+indent.log
+*.devenv.flake.nix

@@ -13,6 +13,10 @@
         path = ./templates/basic;
         description = "A flake you can use to kickstart a bare-bones project";
       };
+      qemuvm = {
+        path = ./templates/qemuvm;
+        description = "A flake you can use to kickstart a qemu project";
+      };
     };
   };
 }
