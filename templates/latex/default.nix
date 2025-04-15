@@ -1,7 +1,7 @@
 { stdenvNoCC, texliveFull, python312Packages }:
 stdenvNoCC.mkDerivation {
-  name = "template-example-doc";
-  pname = "template-example-doc";
+  name = throw "change name";
+  pname = throw "change name";
   src = ./src;
   nativeBuildInputs = [ texliveFull python312Packages.pygments ];
   buildPhase = ''
