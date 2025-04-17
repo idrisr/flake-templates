@@ -7,14 +7,10 @@ build-type:    Simple
 common warnings
   ghc-options:        -Wall
   default-language:   Haskell2010
-  default-extensions:
-    NoImplicitPrelude
-    NoStarIsType
-
+  default-extensions: NoStarIsType
   build-depends:
     , base                  ^>=4.18.2.1
     , optparse-applicative
-    , relude
 
 library
   import:          warnings

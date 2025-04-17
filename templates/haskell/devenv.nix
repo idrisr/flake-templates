@@ -7,6 +7,7 @@ in {
     implicit-hie
     ghcid
     cabal2nix
+    pkgs.ghciwatch
   ];
 
   languages.haskell.enable = true;

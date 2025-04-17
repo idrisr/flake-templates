@@ -1,7 +1,6 @@
 module Params where
 
 import Options.Applicative
-import Relude
 
 data Params = Params
     { input :: FilePath
