@@ -136,3 +136,16 @@
 	overlay={\begin{tcbclipinterior}\fill[red!20!blue!20!white] (frame.south west)
 				rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}}
 }
+
+\newtcblisting{shell}[1]
+{
+	listing engine=minted,
+	minted style=colorful,
+	minted language=shell,
+	minted options={breaklines,linenos,numbersep=3mm},
+	colback=blue!5!white,colframe=blue!75!black,listing only,
+	left=5mm,enhanced,
+	title={#1},
+	overlay={\begin{tcbclipinterior}\fill[red!20!blue!20!white] (frame.south west)
+				rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}}
+}
