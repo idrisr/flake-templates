@@ -1,0 +1,56 @@
+\newglossaryentry{mesa} {
+	name=mesa,
+	description={Collection of userspace GPU drivers that implement APIs like OpenGL, Vulkan, and OpenCL, translating them into GPU commands on Linux}
+}
+
+
+\newglossaryentry{KMS} {
+	name=kms,
+	description={Kernel Mode Setting is the Linux kernel subsystem responsible
+			for setting display resolution, refresh rate, and managing video
+			outputs. It enumerates your displays and sets properties such as their
+			selected resolution, also known as their ``mode''
+		}
+}
+
+\newglossaryentry{DRM} {
+	name=drm,
+	description={Direct Rendering Manager is the Linux kernel subsystem that
+			manages GPU access, buffer objects, and rendering synchronization. It
+			efficiently tasks the GPU with work from userspace
+		}
+}
+
+\newglossaryentry{EGL} {
+	name=EGL,
+	description={
+			Interface between rendering APIs (like OpenGL or OpenGL ES) and the
+			native platform windowing system, used to create GPU contexts and
+			manage rendering surfaces
+		}
+}
+
+
+\newglossaryentry{GBM} {
+	name=gbm,
+	description={Generic Buffer Management is a userspace library that lets
+			applications allocate GPU buffers for rendering without a window system}
+}
+
+\newglossaryentry{libdrm} {
+	name=libdrm,
+	description={userspace library that wraps DRM ioctls, providing
+			Mesa and other clients safe access to the kernel’s graphics APIs}
+}
+
+\newglossaryentry{libinput} {
+	name=libinput,
+	description={library that handles input device events like
+			touchpads, keyboards, and mice in a compositor-friendly, unified way}
+}
+
+\newglossaryentry{evdev} {
+	name=evdev,
+	description={(event device) is a Linux kernel interface that exposes
+			input devices as event streams under \texttt{/dev/input/}}
+}
