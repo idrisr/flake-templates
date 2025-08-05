@@ -25,6 +25,7 @@
             ghc
             pkgs.ghciwatch
             cabal-install
+            pkgs.haskell-language-server
           ];
       };
     };
