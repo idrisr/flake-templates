@@ -5,28 +5,29 @@
   };
 
   outputs = { nixpkgs, flake-utils, ... }:
-    let
-      pkgs = nixpkgs.legacyPackages.${system};
-      system = flake-utils.lib.system.x86_64-linux;
-      compiler = "ghc984";
-      renameme =
-        pkgs.haskell.packages.${compiler}.callCabal2nix "" ./renameme { };
-    in
-    {
-      packages.${system}.default = renameme;
-      devShells.${system}.default = pkgs.mkShell {
-        buildInputs =
-          with pkgs.haskell.packages."${compiler}"; [
-            fourmolu
-            cabal-fmt
-            implicit-hie
-            ghcid
-            cabal2nix
-            ghc
-            pkgs.ghciwatch
-            cabal-install
-            pkgs.haskell-language-server
-          ];
-      };
-    };
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        compiler = "ghc984";
+        renameme =
+          pkgs.haskell.packages.${compiler}.callCabal2nix "" ./renameme { };
+      in
+      {
+        packages.default = renameme;
+        devShells.default = pkgs.mkShell {
+          buildInputs =
+            with pkgs.haskell.packages."${compiler}"; [
+              fourmolu
+              cabal-fmt
+              implicit-hie
+              ghcid
+              cabal2nix
+              ghc
+              pkgs.ghciwatch
+              cabal-install
+              pkgs.haskell-language-server
+            ];
+        };
+      }
+    );
 }
