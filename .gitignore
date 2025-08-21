@@ -5,3 +5,4 @@ templates/haskell/.devenv
 templates/haskell/.devenv.flake.nix
 templates/latex/result
 templates/latex/indent.log
+session.yaml

@@ -1,9 +1,30 @@
-{ stdenvNoCC, texliveFull, python312Packages }:
+{ pkgs, stdenvNoCC, python312Packages }:
+let
+  mytex = pkgs.texlive.combine {
+    inherit (pkgs.texlive)
+      biblatex
+      enumitem
+      glossaries
+      latex-bin
+      latexmk
+      minted
+      pdfcol
+      rsfs cm-super
+      scheme-small
+      tcolorbox
+      tikzfill
+      titlesec
+      upquote
+      xcolor
+      ;
+  };
+in
+
 stdenvNoCC.mkDerivation {
-  name = throw "change name";
-  pname = throw "change name";
+  name = "change name";
+  pname = "change name";
   src = ./src;
-  nativeBuildInputs = [ texliveFull python312Packages.pygments ];
+  nativeBuildInputs = [ mytex python312Packages.pygments pkgs.biber ];
   buildPhase = ''
     latexmk 00-main.tex
   '';
