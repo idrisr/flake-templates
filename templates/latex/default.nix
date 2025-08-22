@@ -21,8 +21,8 @@ let
 in
 
 stdenvNoCC.mkDerivation {
-  name = "change name";
-  pname = "change name";
+  name = throw "change name";
+  pname = throw "change name";
   src = ./src;
   nativeBuildInputs = [ mytex python312Packages.pygments pkgs.biber ];
   buildPhase = ''
