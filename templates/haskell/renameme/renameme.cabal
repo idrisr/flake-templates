@@ -4,32 +4,32 @@ version:       0.1.0.0
 license:       MIT
 build-type:    Simple
 
-common warnings
+common shared
   ghc-options:        -Wall
   default-language:   Haskell2010
   default-extensions: NoStarIsType
   build-depends:
-    , base                  ^>=4.19.2.0
+    , base
     , optparse-applicative
 
 library
-  import:          warnings
+  import:          shared
   exposed-modules: Params
   hs-source-dirs:  src
 
 executable exe
-  import:         warnings
+  import:         shared
   main-is:        Main.hs
   hs-source-dirs: app
   build-depends:  renameme
 
 test-suite tests
-  import:         warnings
+  import:         shared
   type:           exitcode-stdio-1.0
   hs-source-dirs: test
   main-is:        Main.hs
   build-depends:
-    , base         ^>=4.19.2.0
     , renameme
     , tasty
     , tasty-hunit
+    , tasty-quickcheck
