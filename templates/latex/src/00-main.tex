@@ -20,52 +20,52 @@
 \chapter{Type Inference}
 
 \begin{enumerate}[label = {(\alph*)}]
-	\item asdf
-	\item asdf
+  \item asdf
+  \item asdf
 \end{enumerate}
 
 \begin{table}[h]
-	\centering
-	\rowcolors{2}{blue!5}{white}
-	\begin{tabular}{clll}
-		\toprule
-		\textbf{\#} & \textbf{Subsystem}    & \textbf{Dir}                         & \textbf{Why It Matters}                                  \\
-		\midrule
-		1           & Process               & \texttt{kernel/}                     & Scheduling, syscalls, signals, process creation          \\
-		2           & Memory Management     & \texttt{mm/}                         & Paging, virtual memory, \texttt{mmap}, slab/slub         \\
-		3           & VFS (Virtual FS)      & \texttt{fs/}                         & interface for all filesystems                            \\
-		4           & Device Drivers        & \texttt{drivers/}                    & all I/O: input, storage, audio, video                    \\
-		5           & Networking Stack      & \texttt{net/}                        & Interfaces, routing, TCP/IP stack, socket APIs           \\
-		6           & Block I/O             & \texttt{block/}                      & Disks, I/O schedulers, \texttt{bio} structs, filesystems \\
-		7           & Interrupts \& IRQs    & \texttt{kernel/irq/}                 & Device comm, IRQ handling, latency control               \\
-		8           & ALSA (Audio)          & \texttt{sound/}                      & Core kernel audio, used by PipeWire                      \\
-		9           & cgroups \& Namespaces & \texttt{kernel/}, \texttt{fs/}       & Containers, isolation, virtualization                    \\
-		10          & Init \& Boot          & \texttt{init/}, \texttt{init/main.c} & Kernel startup, early init, process 1 launch             \\
-		\bottomrule
-	\end{tabular}
-	\caption{Top 10 Linux Kernel Subsystems to Learn First, with Source Tree Locations}
+  \centering
+  \rowcolors{2}{blue!5}{white}
+  \begin{tabular}{clll}
+    \toprule
+    \textbf{\#} & \textbf{Subsystem}    & \textbf{Dir}                         & \textbf{Why It Matters}                                  \\
+    \midrule
+    1           & Process               & \texttt{kernel/}                     & Scheduling, syscalls, signals, process creation          \\
+    2           & Memory Management     & \texttt{mm/}                         & Paging, virtual memory, \texttt{mmap}, slab/slub         \\
+    3           & VFS (Virtual FS)      & \texttt{fs/}                         & interface for all filesystems                            \\
+    4           & Device Drivers        & \texttt{drivers/}                    & all I/O: input, storage, audio, video                    \\
+    5           & Networking Stack      & \texttt{net/}                        & Interfaces, routing, TCP/IP stack, socket APIs           \\
+    6           & Block I/O             & \texttt{block/}                      & Disks, I/O schedulers, \texttt{bio} structs, filesystems \\
+    7           & Interrupts \& IRQs    & \texttt{kernel/irq/}                 & Device comm, IRQ handling, latency control               \\
+    8           & ALSA (Audio)          & \texttt{sound/}                      & Core kernel audio, used by PipeWire                      \\
+    9           & cgroups \& Namespaces & \texttt{kernel/}, \texttt{fs/}       & Containers, isolation, virtualization                    \\
+    10          & Init \& Boot          & \texttt{init/}, \texttt{init/main.c} & Kernel startup, early init, process 1 launch             \\
+    \bottomrule
+  \end{tabular}
+  \caption{Top 10 Linux Kernel Subsystems to Learn First, with Source Tree Locations}
 \end{table}
 
 
 \setboxcounter{intuition}{9}
 \begin{intuition}{Type Inference}
-	The essense of type inference is walking the abstract syntax tree and
-	collect constraints we must satisfy. Therefore we would reformulate the
-	problem to so-called unification problem.
+  The essense of type inference is walking the abstract syntax tree and
+  collect constraints we must satisfy. Therefore we would reformulate the
+  problem to so-called unification problem.
 \end{intuition}
 
 \begin{definition}{Type Inference}{}
-	Figuring out whether an expression $e$ is well-typed, and if so, what it's
-	type $T$ is $e: T$.
+  Figuring out whether an expression $e$ is well-typed, and if so, what it's
+  type $T$ is $e: T$.
 \end{definition}
 
 \begin{definition}{Type Inference By Hand}{}
-	We can approximate this algorithm by
-	\begin{enumerate}
-		\item assigning a fresh type variable to each bound name
-		\item assigning a fresh type variable to the function return value
-		\item solving type constraints until there is nothing more to do.
-	\end{enumerate}
+  We can approximate this algorithm by
+  \begin{enumerate}
+    \item assigning a fresh type variable to each bound name
+    \item assigning a fresh type variable to the function return value
+    \item solving type constraints until there is nothing more to do.
+  \end{enumerate}
 \end{definition}
 
 \section{Example}
