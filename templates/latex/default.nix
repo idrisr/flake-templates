@@ -3,13 +3,14 @@ let
   mytex = pkgs.texlive.combine {
     inherit (pkgs.texlive)
       biblatex
+      cm-super
       enumitem
       glossaries
       latex-bin
       latexmk
       minted
       pdfcol
-      rsfs cm-super
+      rsfs
       scheme-small
       tcolorbox
       tikzfill
