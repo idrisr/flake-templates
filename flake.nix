@@ -13,6 +13,12 @@
         path = ./templates/basic;
         description = "A flake you can use to kickstart a bare-bones project";
       };
+
+      python = {
+        path = ./templates/python;
+        description = "A flake you can use to kickstart a python project";
+      };
+
       qemuvm = {
         path = ./templates/qemuvm;
         description = "A flake you can use to kickstart a qemu project";
