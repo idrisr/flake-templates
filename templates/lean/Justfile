@@ -1,0 +1,28 @@
+# Bootstrap a fresh clone with `just`.
+default: init
+
+init:
+	lake update
+	lake exe cache get
+	lake build
+
+update:
+	lake update
+
+cache:
+	lake exe cache get
+
+build:
+	lake build
+
+# Rename the project from Renameme to your real name.
+rename:
+	bash scripts/rename-project.sh
+
+# Fast run via bytecode codegen (avoids native C/LLVM build).
+run:
+	lake env lean --run Main.lean --codegen=bytecode
+
+# Native exe build/run (slow first time with mathlib).
+exe:
+	lake exe Main

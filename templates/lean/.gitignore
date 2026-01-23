@@ -1,0 +1,16 @@
+# Lake / Lean
+.lake/
+*.olean
+*.ilean
+
+# Nix
+result
+result-*
+
+# direnv
+.direnv/
+
+# Editor/OS
+*.swp
+*~
+.DS_Store
