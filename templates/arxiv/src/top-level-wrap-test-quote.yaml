@@ -1,0 +1,24 @@
+modifyLineBreaks:
+  textWrapOptions:
+    columns: 72
+    when: after
+    huge: overflow
+    removeBlockLineBreaks: 1
+    multipleSpacesToSingle: 1
+    comments:
+      wrap: 0
+    blocksFollow:
+      other: |-
+        (?x)
+          \\\]
+          |
+          \\item(?:\h|\[)
+          |
+          \\begin\{
+          |
+          \\end\{
+
+verbatimEnvironments:
+  allButDocument:
+    name: '(?!document|verbatim|quote)[^}]+'
+  verbatim: 1
