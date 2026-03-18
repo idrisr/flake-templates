@@ -8,15 +8,14 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        compiler = "ghc984";
         renameme =
-          pkgs.haskell.packages.${compiler}.callCabal2nix "" ./renameme { };
+          pkgs.haskellPackages.callCabal2nix "" ./renameme { };
       in
       {
         packages.default = renameme;
         devShells.default = pkgs.mkShell {
           buildInputs =
-            with pkgs.haskell.packages."${compiler}"; [
+            with pkgs.haskellPackages; [
               fourmolu
               cabal-fmt
               implicit-hie
@@ -25,7 +24,7 @@
               ghc
               pkgs.ghciwatch
               cabal-install
-              pkgs.haskell-language-server
+              haskell-language-server
             ];
         };
       }
