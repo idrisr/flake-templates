@@ -15,12 +15,6 @@ testDummy =
                     wot = "123"
                     got = f sut
                  in testCase sut $ wot @=? got
-              , -- uncomment for failing test.
-                -- `nix flake check` should fail on a failing test
-                let sut = "abc"
-                    wot = "cab"
-                    got = f sut
-                 in testCase sut $ wot @=? got
               ]
 
 main :: IO ()
