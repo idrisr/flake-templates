@@ -1,6 +1,6 @@
 # Get going
 
-Rename all the things "renameme" to whatever.
+Run `just rename` (or `nix run .#rename`) and enter your project name.
 
 run `nix develop` to get the pre-commit hook going.
 

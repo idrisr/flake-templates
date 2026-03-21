@@ -1,0 +1,7 @@
+# Bootstrap a fresh clone with `just`.
+default:
+	@just --list
+
+# Rename the template placeholder project.
+rename:
+	nix run .#rename
