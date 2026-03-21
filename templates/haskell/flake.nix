@@ -23,17 +23,20 @@
           };
           devShells.default = pkgs.mkShell {
             buildInputs =
-              with pkgs.haskellPackages; [
+              (with pkgs; [
+                ghciwatch
+                just
+              ]) ++
+              (with pkgs.haskellPackages; [
                 fourmolu
                 cabal-fmt
                 implicit-hie
                 ghcid
                 cabal2nix
                 ghc
-                pkgs.ghciwatch
                 cabal-install
                 haskell-language-server
-              ];
+              ]);
           };
         }
       );
