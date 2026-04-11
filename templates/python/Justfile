@@ -1,0 +1,7 @@
+# Bootstrap a fresh clone with `just`.
+default:
+	@just --list
+
+# Rename template placeholders in tracked and untracked files.
+rename dist_name="" import_name="":
+	python3 scripts/rename-project.py {{dist_name}} {{import_name}}

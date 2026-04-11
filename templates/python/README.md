@@ -12,13 +12,14 @@ A Nix-first Python package template with:
 Run this once after creating from the template:
 
 ```bash
-nix run .#rename
+just rename
 ```
 
-It renames:
+Or pass names directly:
 
-- distribution name: `python-package-template`
-- import package: `python_package`
+```bash
+just rename my-lib my_lib
+```
 
 ## Quick start
 

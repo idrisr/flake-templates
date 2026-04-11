@@ -11,7 +11,18 @@ import sys
 
 OLD_DIST_NAME = "python-package-template"
 OLD_IMPORT_NAME = "python_package"
-SKIP_DIRS = {".git", ".direnv", ".ipython", "result", "dist", "build"}
+SKIP_DIRS = {
+    ".git",
+    ".direnv",
+    ".ipython",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    "result",
+    "dist",
+    "build",
+    "__pycache__",
+}
 SKIP_FILES = {"scripts/rename-project.py"}
 
 
@@ -43,9 +54,18 @@ def iter_files(root: pathlib.Path) -> list[pathlib.Path]:
     return files
 
 
+def try_read_text(file_path: pathlib.Path) -> str | None:
+    try:
+        return file_path.read_text(encoding="utf-8")
+    except UnicodeDecodeError:
+        return None
+
+
 def replace_in_text_files(root: pathlib.Path, old: str, new: str) -> None:
     for file_path in iter_files(root):
-        content = file_path.read_text(encoding="utf-8")
+        content = try_read_text(file_path)
+        if content is None:
+            continue
         updated = content.replace(old, new)
         if updated != content:
             file_path.write_text(updated, encoding="utf-8")
@@ -101,7 +121,10 @@ def main() -> int:
         return 1
 
     if old_pkg_dir.exists() and new_pkg_dir.exists() and old_pkg_dir != new_pkg_dir:
-        print(f"Error: target package directory '{new_pkg_dir.relative_to(root)}' already exists.", file=sys.stderr)
+        print(
+            f"Error: target package directory '{new_pkg_dir.relative_to(root)}' already exists.",
+            file=sys.stderr,
+        )
         return 1
 
     replace_in_text_files(root, OLD_DIST_NAME, dist_name)
@@ -112,7 +135,9 @@ def main() -> int:
 
     remaining = []
     for file_path in iter_files(root):
-        text = file_path.read_text(encoding="utf-8")
+        text = try_read_text(file_path)
+        if text is None:
+            continue
         if OLD_DIST_NAME in text or OLD_IMPORT_NAME in text:
             remaining.append(file_path.relative_to(root).as_posix())
 
