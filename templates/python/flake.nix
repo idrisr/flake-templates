@@ -25,29 +25,7 @@
                 ]);
           };
 
-          package = python.pkgs.buildPythonPackage {
-            pname = "python-package-template";
-            version = "0.1.0";
-            pyproject = true;
-            inherit src;
-
-            build-system = with python.pkgs; [
-              hatchling
-            ];
-
-            nativeCheckInputs = with python.pkgs; [
-              pytestCheckHook
-            ];
-
-            pythonImportsCheck = [
-              "python_package"
-            ];
-
-            meta = {
-              description = "A Nix-first Python package template";
-              license = pkgs.lib.licenses.mit;
-            };
-          };
+          package = pkgs.callPackage ./. { inherit src; };
 
           tooling = with python.pkgs; [
             ipython
@@ -62,6 +40,8 @@
           ];
         in
         {
+          formatter = pkgs.nixfmt-rfc-style;
+
           packages.default = package;
 
           checks = {
